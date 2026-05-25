@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <!-- ===================== META & SEO ===================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syndicate 22 Football Club | Professional Football Team</title>
+  <meta name="description" content="Syndicate 22 Football Club — a professional football team committed to excellence, teamwork, and passion for the beautiful game. Join our club, view matches, and follow our journey." />
+  <meta name="keywords" content="football team, Syndicate 22, professional football club, football matches, football players, sports club, soccer team" />
+  <meta name="author" content="Syndicate 22 FC" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Syndicate 22 Football Club" />
+  <meta property="og:description" content="Official website of Syndicate 22 FC — a professional football club driven by passion, strategy, and relentless pursuit of victory." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://syndicate22.com" />
+  <meta property="og:image" content="https://placehold.co/1200x630/000000/FF0000?text=Syndicate+22+FC" />
+  <meta property="og:site_name" content="Syndicate 22 FC" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Syndicate 22 Football Club" />
+  <meta name="twitter:description" content="Official website of Syndicate 22 FC — a professional football club." />
+  <meta name="twitter:image" content="https://placehold.co/1200x630/000000/FF0000?text=Syndicate+22+FC" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body: ['Poppins', 'sans-serif'],
+          },
+          colors: {
+            primary: '#E11D48',
+            'primary-dark': '#BE123C',
+            'primary-light': '#FB7185',
+            dark: '#0A0A0A',
+            'dark-card': '#111111',
+            'dark-surface': '#1A1A1A',
+            accent: '#FF0A2D',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- ===================== CUSTOM CSS ===================== -->
+  <style>
+    /* ---------- Base ---------- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0A0A0A;
+      color: #F1F1F1;
+      overflow-x: hidden;
+    }
+
+    /* ---------- Scrollbar ---------- */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #E11D48; border-radius: 4px; }
+
+    /* ---------- Glassmorphism ---------- */
+    .glass {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-strong {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    /* ---------- Gradient Line ---------- */
+    .gradient-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #E11D48, transparent);
+    }
+
+    /* ---------- Gradient Text ---------- */
+    .gradient-text {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E11D48 50%, #FF6B6B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ---------- Glow Button ---------- */
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-glow:hover::before { left: 100%; }
+    .btn-glow:hover {
+      box-shadow: 0 0 25px rgba(225, 29, 72, 0.5), 0 0 50px rgba(225, 29, 72, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Card Hover ---------- */
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(225, 29, 72, 0.15);
+      border-color: rgba(225, 29, 72, 0.4);
+    }
+
+    /* ---------- Image Hover ---------- */
+    .img-hover { overflow: hidden; }
+    .img-hover img {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .img-hover:hover img { transform: scale(1.1); }
+
+    /* ---------- Hero Parallax Overlay ---------- */
+    .hero-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(10,10,10,0.3) 0%,
+        rgba(10,10,10,0.6) 40%,
+        rgba(10,10,10,0.92) 100%
+      );
+    }
+
+    /* ---------- Animated Counter ---------- */
+    .counter-value {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ---------- Section Fade-in ---------- */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- Pulse Ring ---------- */
+    @keyframes pulse-ring {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    .pulse-ring::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid #E11D48;
+      border-radius: 50%;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+
+    /* ---------- Floating Animation ---------- */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .float { animation: float 4s ease-in-out infinite; }
+
+    /* ---------- Mobile Menu ---------- */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* ---------- Nav Scroll ---------- */
+    .nav-scrolled {
+      background: rgba(10, 10, 10, 0.95) !important;
+      backdrop-filter: blur(20px) !important;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ---------- Table Hover ---------- */
+    .match-row {
+      transition: background 0.3s ease;
+    }
+    .match-row:hover {
+      background: rgba(225, 29, 72, 0.08) !important;
+    }
+
+    /* ---------- Back to Top ---------- */
+    #backToTop {
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+    #backToTop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ---------- Form Focus ---------- */
+    .form-input:focus {
+      border-color: #E11D48;
+      box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+    }
+
+    /* ---------- Gallery Item ---------- */
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(225,29,72,0.3));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* ---------- Stat Card Shine ---------- */
+    .stat-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-shine::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: conic-gradient(transparent, rgba(225,29,72,0.1), transparent 30%);
+      animation: rotate 6s linear infinite;
+    }
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ---------- Social Icon ---------- */
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    .social-icon:hover {
+      color: #E11D48;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===================== NAVIGATION BAR ===================== -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-3 group" aria-label="Syndicate 22 Home">
+          <div class="w-10 h-10 rounded-lg  flex items-center justify-center font-heading font-black group-hover:scale-110 transition-transform">
+                <img
+                src="img/logonobg.png"
+                alt="Syndicate 22"
+                loading="lazy"
+              />
+          </div>
+          <span class="font-heading font-bold text-xl tracking-tight">
+            <span class="text-white">SYNDICATE</span>
+            <span class="text-primary ml-1">22</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="#hero" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Home</a>
+          <a href="#about" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">About</a>
+          <a href="#players" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Players</a>
+          <a href="#matches" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Matches</a>
+          <a href="#gallery" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Gallery</a>
+          <a href="#contact" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all">Contact</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <button id="menuBtn" class="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/5 transition-colors" aria-label="Toggle menu" aria-expanded="false">
+          <div class="space-y-1.5" id="hamburgerIcon">
+            <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center" id="bar1"></span>
+            <span class="block w-6 h-0.5 bg-white transition-all duration-300" id="bar2"></span>
+            <span class="block w-4 h-0.5 bg-white transition-all duration-300 origin-center" id="bar3"></span>
+          </div>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-full sm:w-80 h-screen bg-dark-card/98 backdrop-blur-xl z-50 lg:hidden">
+      <div class="flex flex-col h-full px-6 pt-24 pb-8">
+        <div class="flex flex-col gap-2">
+          <a href="#hero" class="mobile-link px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Home</a>
+          <a href="#about" class="mobile-link px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">About</a>
+          <a href="#players" class="mobile-link px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Players</a>
+          <a href="#matches" class="mobile-link px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Matches</a>
+          <a href="#gallery" class="mobile-link px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Gallery</a>
+          <a href="#contact" class="mobile-link px-4 py-3 text-lg font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all">Contact</a>
+        </div>
+        <div class="mt-auto">
+          <div class="gradient-line mb-4"></div>
+          <p class="text-xs text-gray-500 text-center">&copy; 2026 Syndicate 22</p>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <main>
+    <!-- ===================== HERO SECTION ===================== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center" aria-label="Hero section">
+      <!-- Background Image -->
+      <div class="absolute inset-0">
+        <img
+          src="img/heroimg.jpeg"
+          alt="Syndicate 22"
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div class="hero-overlay absolute inset-0"></div>
+      </div>
+
+      <!-- Decorative Elements -->
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-primary-light font-medium mb-8 float">
+          <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+          Ex Student Chhagalnaiya Academy
+        </div>
+
+        <h1 class="font-heading font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none mb-6">
+          <span class="text-white">SYNDICATE 22</span><br /><br /><br/><br/>
+        </h1>
+
+        <p class="max-w-2xl mx-auto text-gray-400 text-lg sm:text-xl leading-relaxed mb-10">
+          A professional football team driven by passion, strategy, and an unrelenting pursuit of victory. Join Syndicate 22 — where legends are forged on the pitch.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section id="about" class="py-20 lg:py-32 relative" aria-label="About Syndicate 22">
+      <div class="absolute top-0 left-0 w-full gradient-line"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="fade-section">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span class="text-primary font-semibold text-sm uppercase tracking-widest">Who We Are</span>
+            <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-3">
+              About <span class="gradient-text">Syndicate 22</span>
+            </h2>
+            <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <!-- About Grid -->
+          <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Image -->
+            <div class="img-hover rounded-2xl overflow-hidden glass-strong">
+              <img
+                src="img/logo.jpg"
+                alt="Syndicate 22 professional football team group photo"
+                class="w-full h-auto object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Text Content -->
+            <div>
+              <h3 class="font-heading font-bold text-2xl text-white mb-4">Built for Glory, Driven by Passion</h3>
+              <p class="text-gray-400 leading-relaxed mb-6">
+                Syndicate 22 Football Club is more than just a team — it's a brotherhood of athletes united by the love of the beautiful game. Founded with a vision to dominate the sport, our club combines tactical brilliance with raw athleticism to deliver world-class performances on every pitch we step onto.
+              </p>
+              <p class="text-gray-400 leading-relaxed mb-8">
+                From grassroots development to professional competition, Syndicate 22 stands as a beacon of excellence in modern football. Our commitment to nurturing talent, fostering teamwork, and pushing boundaries defines everything we do.
+              </p>
+
+              <!-- Mission & Vision Cards -->
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="glass rounded-xl p-6 card-hover">
+                  <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                  </div>
+                  <h4 class="font-heading font-bold text-white mb-2">Our Mission</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">To compete at the highest level while developing world-class talent and inspiring the next generation of footballers.</p>
+                </div>
+                <div class="glass rounded-xl p-6 card-hover">
+                  <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                  </div>
+                  <h4 class="font-heading font-bold text-white mb-2">Our Vision</h4>
+                  <p class="text-gray-400 text-sm leading-relaxed">To become a globally recognized football club, known for excellence, sportsmanship, and community impact.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PLAYERS SECTION ===================== -->
+    <section id="players" class="py-20 lg:py-32 bg-dark-surface/50 relative" aria-label="Team players">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="fade-section">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span class="text-primary font-semibold text-sm uppercase tracking-widest">The Squad</span>
+            <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-3">
+              Meet Our <span class="gradient-text">Players</span>
+            </h2>
+            <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <!-- Players Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Player 1 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="img/riaj.jpg" alt="Riaj Uddin" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Md Riaj Uddin </h3>
+                <p class="text-primary text-sm font-medium mt-1">Manager</p>
+              </div>
+            </article>
+
+            <!-- Player 2 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="https://placehold.co/300x300/222222/FFFFFF?text=Player" alt="James Okafor — Defender for Syndicate 22 FC" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Istiyak Tahsin</h3>
+                <p class="text-primary text-sm font-medium mt-1">Goalkeeper</p>
+              </div>
+            </article>
+
+            <!-- Player 3 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="img/pritam.jpg" alt="Shariar Pritom" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <div class="flex items-center gap-2">
+                  <h3 class="font-heading font-bold text-white text-lg">
+                      Shariar Pritam
+                  </h3>
+                  <p class="text-red-800"><b>C</b></p>
+              </div>
+                <p class="text-primary text-sm font-medium mt-1">Midfielder</p>
+              </div>
+            </article>
+
+            <!-- Player 4 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="img/ashik.jpg" alt="NJR Ashik" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <div class="flex items-center gap-2">
+                  <h3 class="font-heading font-bold text-white text-lg">
+                      NJR Ashik
+                  </h3>
+                  <p class="text-red-800"><b>VC</b></p>
+              </div>
+                <p class="text-primary text-sm font-medium mt-1">Midfielder</p>
+              </div>
+            </article>
+
+            <!-- Player 5 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="https://placehold.co/300x300/222222/FFFFFF?text=Player" alt="Md Samiul Islam" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Md Samiul Islam</h3>
+                <p class="text-primary text-sm font-medium mt-1">Midfielder</p>
+              </div>
+            </article>
+
+            <!-- Player 6 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="https://placehold.co/300x300/222222/FFFFFF?text=Player" alt="Md AL Hasan" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Md AL Hasan</h3>
+                <p class="text-primary text-sm font-medium mt-1">Strikers</p>
+              </div>
+            </article>
+
+            <!-- Player 7 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="img/Omayer.jpg" alt="Md Omayer Hossain" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Md Omayer Hossain</h3>
+                <p class="text-primary text-sm font-medium mt-1">Strikers</p>
+              </div>
+            </article>
+
+            <!-- Player 8 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="img/tusar.jpg" alt="Sayed Tusher" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Sayed Tusher</h3>
+                <p class="text-primary text-sm font-medium mt-1">Strikers</p>
+              </div>
+            </article>
+
+            <!-- Player9 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="https://placehold.co/300x300/222222/FFFFFF?text=Player" alt="Md Nurer Shapa" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Md Nurer Shapa</h3>
+                <p class="text-primary text-sm font-medium mt-1">Defenders</p>
+              </div>
+            </article>
+
+            <!-- Player10-->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="https://placehold.co/300x300/222222/FFFFFF?text=Player" alt="Mohammed Bakhtiyar" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Mohammed Bakhtiyar</h3>
+                <p class="text-primary text-sm font-medium mt-1">Defenders</p>
+              </div>
+            </article>
+
+            <!-- Player 7 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="img/moinul.jpg" alt="Md Moinul Hossain" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">Md Moinul Hossain</h3>
+                <p class="text-primary text-sm font-medium mt-1">Defenders</p>
+              </div>
+            </article>
+
+            <!-- Player 8 -->
+            <article class="glass rounded-2xl overflow-hidden card-hover group">
+              <div class="relative img-hover">
+                <img src="img/rehab.jpg" alt="AN Rihab" class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="absolute top-3 right-3 w-10 h-10 rounded-full bg-primary flex items-center justify-center font-heading font-black text-white text-sm">22</div>
+                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+              </div>
+              <div class="p-5">
+                <h3 class="font-heading font-bold text-white text-lg">AN Rihab</h3>
+                <p class="text-primary text-sm font-medium mt-1">Strikers</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MATCHES SECTION ===================== -->
+    <section id="matches" class="py-20 lg:py-32 relative" aria-label="Match schedule and results">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="fade-section">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span class="text-primary font-semibold text-sm uppercase tracking-widest">Fixtures &amp; Results</span>
+            <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-3">
+              Our <span class="gradient-text">Matches</span>
+            </h2>
+            <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <!-- Matches Table -->
+          <div class="glass-strong rounded-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-left" role="table">
+                <thead>
+                  <tr class="border-b border-white/10">
+                    <th class="px-6 py-4 text-xs uppercase tracking-wider text-gray-400 font-semibold">Opponent</th>
+                    <th class="px-6 py-4 text-xs uppercase tracking-wider text-gray-400 font-semibold">Date</th>
+                    <th class="px-6 py-4 text-xs uppercase tracking-wider text-gray-400 font-semibold">Venue</th>
+                    <th class="px-6 py-4 text-xs uppercase tracking-wider text-gray-400 font-semibold">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="match-row border-b border-white/5">
+                    <td class="px-6 py-5 font-medium text-white">FC Thunderstrike</td>
+                    <td class="px-6 py-5 text-gray-400">Jun 05, 2025</td>
+                    <td class="px-6 py-5 text-gray-400">Home — Syndicate Arena</td>
+                    <td class="px-6 py-5"><span class="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-400 border border-green-500/20">Won 3-1</span></td>
+                  </tr>
+                  <tr class="match-row border-b border-white/5">
+                    <td class="px-6 py-5 font-medium text-white">Red Wolves United</td>
+                    <td class="px-6 py-5 text-gray-400">Jun 12, 2025</td>
+                    <td class="px-6 py-5 text-gray-400">Away — Wolf Den Stadium</td>
+                    <td class="px-6 py-5"><span class="px-3 py-1 text-xs font-semibold rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">Draw 2-2</span></td>
+                  </tr>
+                  <tr class="match-row border-b border-white/5">
+                    <td class="px-6 py-5 font-medium text-white">Atlas City FC</td>
+                    <td class="px-6 py-5 text-gray-400">Jun 19, 2025</td>
+                    <td class="px-6 py-5 text-gray-400">Home — Syndicate Arena</td>
+                    <td class="px-6 py-5"><span class="px-3 py-1 text-xs font-semibold rounded-full bg-green-500/10 text-green-400 border border-green-500/20">Won 2-0</span></td>
+                  </tr>
+                  <tr class="match-row border-b border-white/5">
+                    <td class="px-6 py-5 font-medium text-white">Phoenix Rovers</td>
+                    <td class="px-6 py-5 text-gray-400">Jun 26, 2025</td>
+                    <td class="px-6 py-5 text-gray-400">Away — Phoenix Park</td>
+                    <td class="px-6 py-5"><span class="px-3 py-1 text-xs font-semibold rounded-full bg-red-500/10 text-red-400 border border-red-500/20">Lost 1-3</span></td>
+                  </tr>
+                  <tr class="match-row border-b border-white/5">
+                    <td class="px-6 py-5 font-medium text-white">Iron Shield SC</td>
+                    <td class="px-6 py-5 text-gray-400">Jul 03, 2025</td>
+                    <td class="px-6 py-5 text-gray-400">Home — Syndicate Arena</td>
+                    <td class="px-6 py-5"><span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Upcoming</span></td>
+                  </tr>
+                  <tr class="match-row">
+                    <td class="px-6 py-5 font-medium text-white">Vanguard FC</td>
+                    <td class="px-6 py-5 text-gray-400">Jul 10, 2025</td>
+                    <td class="px-6 py-5 text-gray-400">Away — Vanguard Grounds</td>
+                    <td class="px-6 py-5"><span class="px-3 py-1 text-xs font-semibold rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">Upcoming</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY SECTION ===================== -->
+    <section id="gallery" class="py-20 lg:py-32 bg-dark-surface/50 relative" aria-label="Photo gallery">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="fade-section">
+          <!-- Section Header -->
+          <div class="text-center mb-16">
+            <span class="text-primary font-semibold text-sm uppercase tracking-widest">Moments</span>
+            <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-3">
+              Photo <span class="gradient-text">Gallery</span>
+            </h2>
+            <div class="w-16 h-1 bg-primary mx-auto mt-4 rounded-full"></div>
+          </div>
+
+          <!-- Gallery Grid -->
+<!-- Gallery Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+  <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3]">
+    <img src="https://placehold.co/400x300/000000/FF0000"
+         alt="Syndicate 22 football match action shot"
+         class="w-full h-full object-cover"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3]">
+    <img src="https://placehold.co/400x300/0A0A0A/FF0000"
+         alt="Syndicate 22 team training session"
+         class="w-full h-full object-cover"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3]">
+    <img src="https://placehold.co/400x300/111111/FF0000"
+         alt="Syndicate 22 victory celebration"
+         class="w-full h-full object-cover"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3]">
+    <img src="https://placehold.co/400x300/0A0A0A/FF0000"
+         alt="Syndicate 22 full team lineup on the pitch"
+         class="w-full h-full object-cover"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3]">
+    <img src="https://placehold.co/400x300/111111/FF0000"
+         alt="Syndicate 22 fans cheering at the stadium"
+         class="w-full h-full object-cover"
+         loading="lazy" />
+  </div>
+
+  <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3]">
+    <img src="https://placehold.co/400x300/0F0F0F/FF0000"
+         alt="Syndicate 22 trophy ceremony"
+         class="w-full h-full object-cover"
+         loading="lazy" />
+  </div>
+
+</div>
+        </div>
+      </div>
+    </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="contact" class="relative pt-16 pb-8 border-t border-white/5" role="contentinfo">
+    <div class="absolute top-0 left-0 w-full gradient-line"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <!-- Brand -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center font-heading font-black text-white text-lg">S</div>
+            <span class="font-heading font-bold text-xl">
+              <span class="text-white">SYNDICATE</span>
+              <span class="text-primary ml-1">22</span>
+            </span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-md mb-6">
+            Syndicate 22 Football Club is a professional football team dedicated to excellence, teamwork, and inspiring the next generation of athletes. Follow our journey as we compete at the highest levels of the beautiful game.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-heading font-bold text-white mb-4">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#hero" class="text-gray-400 text-sm hover:text-primary transition-colors">Home</a></li>
+            <li><a href="#about" class="text-gray-400 text-sm hover:text-primary transition-colors">About Us</a></li>
+            <li><a href="#players" class="text-gray-400 text-sm hover:text-primary transition-colors">Players</a></li>
+            <li><a href="#matches" class="text-gray-400 text-sm hover:text-primary transition-colors">Matches</a></li>
+            <li><a href="#gallery" class="text-gray-400 text-sm hover:text-primary transition-colors">Gallery</a></li>
+          </ul>
+        </div>
+
+        <!-- Club Info -->
+        <div>
+          <h4 class="font-heading font-bold text-white mb-4">Club Info</h4>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span class="text-gray-400 text-sm">Chhagalnaiya Academy</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span class="text-gray-400 text-sm">info@syndicate22.com</span>
+            </li>
+          <div class="flex items-center gap-3">
+            <a href="#" class="social-icon w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary/10" aria-label="Facebook"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <span class="text-gray-400 text-sm">Syndicate 22</span>
+          </div>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-500 text-sm">&copy; 2026 raihanstack. All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Privacy Policy</a>
+          <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== BACK TO TOP BUTTON ===================== -->
+  <button id="backToTop" class="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary hover:bg-primary-dark text-white flex items-center justify-center shadow-lg shadow-primary/20 transition-all z-40 btn-glow" aria-label="Back to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    // ---------- Sticky Navbar ----------
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+
+    // ---------- Mobile Menu ----------
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      menuBtn.setAttribute('aria-expanded', menuOpen);
+      mobileMenu.classList.toggle('open');
+
+      if (menuOpen) {
+        bar1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'rotate(-45deg) translate(4px, -4px)';
+        bar3.style.width = '1.5rem';
+      } else {
+        bar1.style.transform = '';
+        bar2.style.opacity = '1';
+        bar3.style.transform = '';
+        bar3.style.width = '1rem';
+      }
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        menuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenu.classList.remove('open');
+        bar1.style.transform = '';
+        bar2.style.opacity = '1';
+        bar3.style.transform = '';
+        bar3.style.width = '1rem';
+      });
+    });
+
+    // ---------- Back to Top ----------
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ---------- Scroll Fade-in Sections ----------
+    const fadeSections = document.querySelectorAll('.fade-section');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fadeSections.forEach(section => fadeObserver.observe(section));
+
+    // ---------- Animated Counters ----------
+    const counters = document.querySelectorAll('.counter-value');
+    let countersAnimated = false;
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !countersAnimated) {
+          countersAnimated = true;
+          counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const duration = 2000;
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              // Ease out cubic
+              const eased = 1 - Math.pow(1 - progress, 3);
+              counter.textContent = Math.floor(eased * target);
+              if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+              } else {
+                counter.textContent = target;
+              }
+            }
+            requestAnimationFrame(updateCounter);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // ---------- Contact Form (Basic Validation) ----------
+    const contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Simple email regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      alert('Thank you for contacting Syndicate 22 FC! We will get back to you soon.');
+      contactForm.reset();
+    });
+
+    // ---------- Active Nav Link Highlight ----------
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('text-white', 'bg-white/5');
+        link.classList.add('text-gray-300');
+        if (link.getAttribute('href') === '#' + current) {
+          link.classList.add('text-white', 'bg-white/5');
+          link.classList.remove('text-gray-300');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
