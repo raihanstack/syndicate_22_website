@@ -43,13 +43,13 @@
             body: ['Poppins', 'sans-serif'],
           },
           colors: {
-            primary: '#E11D48',
-            'primary-dark': '#BE123C',
-            'primary-light': '#FB7185',
+            primary: '#003453',
+            'primary-dark': '#002740',
+            'primary-light': '#1A6B8A',
             dark: '#0A0A0A',
             'dark-card': '#111111',
             'dark-surface': '#1A1A1A',
-            accent: '#FF0A2D',
+            accent: '#003453',
           },
         },
       },
@@ -70,7 +70,7 @@
     /* ---------- Scrollbar ---------- */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #0A0A0A; }
-    ::-webkit-scrollbar-thumb { background: #E11D48; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #003453; border-radius: 4px; }
 
     /* ---------- Glassmorphism ---------- */
     .glass {
@@ -89,12 +89,12 @@
     /* ---------- Gradient Line ---------- */
     .gradient-line {
       height: 3px;
-      background: linear-gradient(90deg, transparent, #E11D48, transparent);
+      background: linear-gradient(90deg, transparent, #003453, transparent);
     }
 
     /* ---------- Gradient Text ---------- */
     .gradient-text {
-      background: linear-gradient(135deg, #FFFFFF 0%, #E11D48 50%, #FF6B6B 100%);
+      background: linear-gradient(135deg, #FFFFFF 0%, #003453 50%, #1A6B8A 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -116,7 +116,7 @@
     }
     .btn-glow:hover::before { left: 100%; }
     .btn-glow:hover {
-      box-shadow: 0 0 25px rgba(225, 29, 72, 0.5), 0 0 50px rgba(225, 29, 72, 0.2);
+      box-shadow: 0 0 25px rgba(0, 52, 83, 0.5), 0 0 50px rgba(0, 52, 83, 0.2);
       transform: translateY(-2px);
     }
 
@@ -126,8 +126,8 @@
     }
     .card-hover:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(225, 29, 72, 0.15);
-      border-color: rgba(225, 29, 72, 0.4);
+      box-shadow: 0 20px 40px rgba(0, 52, 83, 0.15);
+      border-color: rgba(0, 52, 83, 0.4);
     }
 
     /* ---------- Image Hover ---------- */
@@ -172,7 +172,7 @@
       content: '';
       position: absolute;
       inset: -4px;
-      border: 2px solid #E11D48;
+      border: 2px solid #003453;
       border-radius: 50%;
       animation: pulse-ring 2s ease-out infinite;
     }
@@ -203,7 +203,7 @@
       transition: background 0.3s ease;
     }
     .match-row:hover {
-      background: rgba(225, 29, 72, 0.08) !important;
+      background: rgba(0, 52, 83, 0.08) !important;
     }
 
     /* ---------- Back to Top ---------- */
@@ -219,8 +219,8 @@
 
     /* ---------- Form Focus ---------- */
     .form-input:focus {
-      border-color: #E11D48;
-      box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15);
+      border-color: #003453;
+      box-shadow: 0 0 0 3px rgba(0, 52, 83, 0.15);
     }
 
     /* ---------- Gallery Item ---------- */
@@ -233,7 +233,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 50%, rgba(225,29,72,0.3));
+      background: linear-gradient(180deg, transparent 50%, rgba(0,52,83,0.3));
       opacity: 0;
       transition: opacity 0.4s ease;
     }
@@ -249,7 +249,7 @@
       position: absolute;
       top: -50%; left: -50%;
       width: 200%; height: 200%;
-      background: conic-gradient(transparent, rgba(225,29,72,0.1), transparent 30%);
+      background: conic-gradient(transparent, rgba(0,52,83,0.1), transparent 30%);
       animation: rotate 6s linear infinite;
     }
     @keyframes rotate {
@@ -261,7 +261,7 @@
       transition: all 0.3s ease;
     }
     .social-icon:hover {
-      color: #E11D48;
+      color: #003453;
       transform: translateY(-3px);
     }
   </style>
@@ -500,7 +500,7 @@
                   <h3 class="font-heading font-bold text-white text-lg">
                       Shariar Pritam
                   </h3>
-                  <p class="text-red-800"><b>C</b></p>
+                  <p class="text-primary"><b>C</b></p>
               </div>
                 <p class="text-primary text-sm font-medium mt-1">Midfielder</p>
               </div>
@@ -518,7 +518,7 @@
                   <h3 class="font-heading font-bold text-white text-lg">
                       NJR Ashik
                   </h3>
-                  <p class="text-red-800"><b>VC</b></p>
+                  <p class="text-primary"><b>VC</b></p>
               </div>
                 <p class="text-primary text-sm font-medium mt-1">Midfielder</p>
               </div>
@@ -743,7 +743,13 @@
         <!-- Brand -->
         <div class="lg:col-span-2">
           <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center font-heading font-black text-white text-lg">S</div>
+          <div class="w-10 h-10 rounded-lg  flex items-center justify-center font-heading font-black group-hover:scale-110 transition-transform">
+                <img
+                src="img/logonobg.png"
+                alt="Syndicate 22"
+                loading="lazy"
+              />
+          </div>
             <span class="font-heading font-bold text-xl">
               <span class="text-white">SYNDICATE</span>
               <span class="text-primary ml-1">22</span>
@@ -779,7 +785,7 @@
               <span class="text-gray-400 text-sm">info@syndicate22.com</span>
             </li>
           <div class="flex items-center gap-3">
-            <svg class="w-4 h-4 text-primary mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48" class="w-5 h-5 text-primary mt-0.5 flex-shrink-0"><path fill="#039be5" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"></path><path fill="#fff" d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z"></path></svg>
             <span class="text-gray-400 text-sm"><a href="https://www.facebook.com/profile.php?id=61576181378583" target="_blank" rel="noopener noreferrer">Syndicate 22</a></span>
           </div>
           </ul>
@@ -788,7 +794,7 @@
 
       <!-- Bottom Bar -->
       <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-gray-500 text-sm">&copy; 2026 <a href="https://github.com/raihanstack">raihanstack</a>. All rights reserved.</p>
+        <p class="text-gray-500 text-sm">&copy; 2026 <a href="https://github.com/raihanstack" class="text-red-500">raihanstack</a>. All rights reserved.</p>
         <div class="flex items-center gap-6">
           <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Privacy Policy</a>
           <a href="#" class="text-gray-500 text-sm hover:text-primary transition-colors">Terms of Service</a>
