@@ -102,6 +102,310 @@
       overflow-x: hidden;
     }
 
+    /* ---------- Page Load Animation ---------- */
+    .page-loader {
+      position: fixed;
+      inset: 0;
+      background: #0A0A0A;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .page-loader.loaded {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-logo {
+      animation: loaderPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes loaderPulse {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.15); opacity: 1; }
+    }
+
+    /* ---------- Text Reveal Animation ---------- */
+    @keyframes textReveal {
+      from { opacity: 0; transform: translateY(30px); filter: blur(8px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .text-reveal {
+      opacity: 0;
+      animation: textReveal 0.8s ease forwards;
+    }
+
+    .text-reveal-delay-1 { animation-delay: 0.2s; }
+    .text-reveal-delay-2 { animation-delay: 0.4s; }
+    .text-reveal-delay-3 { animation-delay: 0.6s; }
+    .text-reveal-delay-4 { animation-delay: 0.8s; }
+
+    /* ---------- Scroll Down Indicator ---------- */
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    .scroll-indicator {
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    /* ---------- Hero Particles ---------- */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(56, 189, 248, 0.3);
+      border-radius: 50%;
+      animation: particleFloat linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-10vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ---------- Stats Bar ---------- */
+    .stats-bar {
+      position: relative;
+      z-index: 10;
+      margin-top: -40px;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 24px 16px;
+      position: relative;
+    }
+
+    .stat-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+    }
+
+    .stat-number {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      background: linear-gradient(135deg, #fff, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* ---------- Gallery Pro ---------- */
+    .gallery-pro-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-pro-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0, 52, 83, 0.6) 100%);
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .gallery-pro-item:hover::before {
+      opacity: 1;
+    }
+
+    .gallery-pro-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 52, 83, 0.2);
+      border-color: rgba(56, 189, 248, 0.2);
+    }
+
+    .gallery-pro-item img {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-pro-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-pro-item .gallery-zoom-icon {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      z-index: 2;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.2);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0.7);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .gallery-pro-item:hover .gallery-zoom-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .gallery-hidden { display: none; }
+
+    /* ---------- Load More Button ---------- */
+    .btn-load-more {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0, 52, 83, 0.3), rgba(56, 189, 248, 0.1));
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      padding: 14px 40px;
+      border-radius: 50px;
+      color: #38bdf8;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    .btn-load-more:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(0, 52, 83, 0.4));
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .btn-load-more::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn-load-more:hover::before {
+      left: 100%;
+    }
+
+    /* ---------- Footer Pro ---------- */
+    .footer-gradient-line {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #003453, #38bdf8, #0ea5e9, #003453, transparent);
+      animation: shimmerLine 3s ease infinite;
+      background-size: 200% 100%;
+    }
+
+    @keyframes shimmerLine {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .footer-link {
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #38bdf8;
+      transition: width 0.3s ease;
+    }
+
+    .footer-link:hover::after {
+      width: 100%;
+    }
+
+    .footer-social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.4s ease;
+    }
+
+    .footer-social-icon:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15);
+    }
+
+    /* ---------- Enhanced Lightbox ---------- */
+    .lightbox-modal img {
+      transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+
+    .lightbox-modal.active img {
+      animation: lightboxZoomIn 0.4s ease forwards;
+    }
+
+    @keyframes lightboxZoomIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* ---------- Lightbox Counter ---------- */
+    .lightbox-counter {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.5);
+      font-family: 'Montserrat', sans-serif;
+      z-index: 2;
+    }
+
+    /* ---------- Section Divider ---------- */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.15), transparent);
+    }
+
     /* ---------- Scrollbar ---------- */
     ::-webkit-scrollbar {
       width: 8px;
@@ -374,10 +678,204 @@
       color: #003453;
       transform: translateY(-3px);
     }
+
+    /* ---------- Premium Player Card ---------- */
+    .player-card {
+      position: relative;
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      background: linear-gradient(145deg, #111111 0%, #0d0d0d 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .player-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0), rgba(56, 189, 248, 0));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      transition: background 0.5s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .player-card:hover::before {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(0, 52, 83, 0.8), rgba(56, 189, 248, 0.3));
+    }
+
+    .player-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(0, 52, 83, 0.25), 0 0 40px rgba(56, 189, 248, 0.08);
+      border-color: transparent;
+    }
+
+    .player-card .player-img-wrapper {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .player-card .player-img-wrapper img {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+    }
+
+    .player-card:hover .player-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .player-card .player-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(10, 10, 10, 0.95) 100%);
+      z-index: 1;
+    }
+
+    .player-card .position-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .player-card:hover .position-badge {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .badge-manager { background: rgba(168, 85, 247, 0.2); color: #c084fc; border-color: rgba(168, 85, 247, 0.3); }
+    .badge-goalkeeper { background: rgba(234, 179, 8, 0.2); color: #fbbf24; border-color: rgba(234, 179, 8, 0.3); }
+    .badge-midfielder { background: rgba(34, 197, 94, 0.2); color: #4ade80; border-color: rgba(34, 197, 94, 0.3); }
+    .badge-striker { background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.3); }
+    .badge-defender { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
+
+    .player-card .jersey-number {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 3;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      color: #0A0A0A;
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .player-card:hover .jersey-number {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+    }
+
+    .player-card .player-info {
+      padding: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .player-card .player-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #fff;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+
+    .player-card:hover .player-name {
+      background: linear-gradient(135deg, #fff, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .player-card .player-role {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 4px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .player-card .captain-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+
+    .captain-c { background: rgba(234, 179, 8, 0.15); color: #fbbf24; border: 1px solid rgba(234, 179, 8, 0.3); }
+    .captain-vc { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    .player-card .card-bottom-line {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #003453, #38bdf8, #003453, transparent);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .player-card:hover .card-bottom-line {
+      opacity: 1;
+    }
+
+    /* Staggered entrance animation */
+    @keyframes cardReveal {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .player-card.revealed {
+      animation: cardReveal 0.6s ease forwards;
+    }
   </style>
 </head>
 
 <body>
+  <!-- ===================== PAGE LOADER ===================== -->
+  <div id="pageLoader" class="page-loader">
+    <div class="text-center loader-logo">
+      <img src="img/logonobg.png" alt="Loading..." class="w-16 h-16 mx-auto mb-4 opacity-80" />
+      <p class="text-gray-500 text-xs uppercase tracking-[0.3em] font-medium">Syndicate 22</p>
+    </div>
+  </div>
+
   <!-- ===================== NAVIGATION BAR ===================== -->
   <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" role="navigation"
     aria-label="Main navigation">
@@ -476,21 +974,29 @@
         <div class="hero-overlay absolute inset-0"></div>
       </div>
 
+      <!-- Floating Particles -->
+      <div class="hero-particles" id="heroParticles"></div>
+
       <!-- Decorative Elements -->
       <div class="absolute top-20 left-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
       <div class="absolute bottom-20 right-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/8 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="relative z-10 w-full max-w-5xl mx-auto px-4 text-center mt-12 sm:mt-6 md:-mt-8">
         <div
-          class="inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full glass text-[10px] md:text-sm text-accent font-medium mb-3 md:mb-6 float mt-4">
+          class="text-reveal inline-flex items-center gap-1.5 md:gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full glass text-[10px] md:text-sm text-accent font-medium mb-3 md:mb-6 float mt-4">
           <span class="w-1.5 h-1.5 md:w-2 md:h-2 bg-accent rounded-full animate-pulse"></span>
           Ex-Students of Chhagalnaiya Academy
         </div>
 
         <h1
-          class="font-heading font-black text-3xl sm:text-5xl md:text-7xl lg:text-8xl md:-mt-6 leading-none tracking-tight drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
+          class="text-reveal text-reveal-delay-1 font-heading font-black text-3xl sm:text-5xl md:text-7xl lg:text-8xl md:-mt-6 leading-none tracking-tight drop-shadow-[0_0_15px_rgba(56,189,248,0.3)]">
           <span class="text-white">SYNDICATE </span><span class="text-accent">22</span>
         </h1>
+
+        <p class="text-reveal text-reveal-delay-2 mt-3 md:mt-4 text-gray-400 text-[10px] md:text-sm font-medium tracking-[0.3em] uppercase">
+          Victory &bull; Brotherhood &bull; Passion
+        </p>
       </div>
 
       <!-- Middle empty space to show faces -->
@@ -498,16 +1004,29 @@
 
       <!-- Hero Bottom Content -->
       <div class="relative z-10 w-full max-w-5xl mx-auto px-2 md:px-4 text-center mb-2 md:mt-8 md:mb-0">
-        <p class="max-w-3xl mx-auto text-gray-200 text-xs sm:text-sm md:text-xl leading-relaxed drop-shadow-md">
+        <p class="text-reveal text-reveal-delay-3 max-w-3xl mx-auto text-gray-200 text-xs sm:text-sm md:text-xl leading-relaxed drop-shadow-md">
           We are a group of friends who love football. We play together, win together, and never give up. That's what
           makes us Syndicate 22.
         </p>
+
+        <!-- Scroll Down Indicator -->
+        <div class="text-reveal text-reveal-delay-4 mt-6 md:mt-10 scroll-indicator">
+          <a href="#about" class="inline-flex flex-col items-center gap-1 text-gray-500 hover:text-accent transition-colors">
+            <span class="text-[10px] md:text-xs uppercase tracking-widest font-medium">Scroll</span>
+            <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
 
+
     <!-- ===================== ABOUT SECTION ===================== -->
-    <section id="about" class="py-10 lg:py-16 relative" aria-label="About Syndicate 22">
-      <div class="absolute top-0 left-0 w-full gradient-line"></div>
+    <section id="about" class="py-16 lg:py-24 relative" aria-label="About Syndicate 22">
+      <div class="absolute top-0 left-0 w-full section-divider"></div>
+      <div class="absolute top-40 right-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-20 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -523,23 +1042,27 @@
               About <span class="gradient-text">Syndicate 22</span>
             </h2>
 
-            <div class="w-16 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-400 mt-4 max-w-lg mx-auto text-sm md:text-base">More than a team — we're a family built on the football field.</p>
+            <div class="w-16 h-1 bg-accent mx-auto mt-5 rounded-full"></div>
           </div>
 
           <!-- About Grid -->
-          <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
             <!-- Image -->
-            <div class="img-hover rounded-2xl overflow-hidden glass-strong">
-              <img src="img/logo.jpg" alt="Syndicate 22 SSC 2022 batch football team group photo"
-                class="w-full h-auto object-cover" loading="lazy" decoding="async" />
+            <div class="relative group">
+              <div class="absolute -inset-3 bg-gradient-to-r from-accent/20 via-primary/10 to-accent/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              <div class="relative img-hover rounded-2xl overflow-hidden glass-strong">
+                <img src="img/logo.jpg" alt="Syndicate 22 SSC 2022 batch football team group photo"
+                  class="w-full h-auto object-cover" loading="lazy" decoding="async" />
+              </div>
             </div>
 
             <!-- Text Content -->
             <div>
 
-              <h3 class="font-heading font-bold text-2xl text-white mb-4">
-                We Are Like Family
+              <h3 class="font-heading font-bold text-2xl lg:text-3xl text-white mb-4">
+                We Are Like <span class="gradient-text">Family</span>
               </h3>
 
               <p class="text-gray-400 leading-relaxed mb-6">
@@ -555,8 +1078,8 @@
               <!-- Mission & Vision Cards -->
               <div class="grid sm:grid-cols-2 gap-4">
                 <!-- Goal -->
-                <div class="glass rounded-xl p-6 card-hover shadow-lg shadow-accent/5">
-                  <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <div class="glass rounded-xl p-6 card-hover shadow-lg shadow-accent/5 group/card">
+                  <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover/card:scale-110 transition-transform">
                     <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -570,8 +1093,8 @@
                   </p>
                 </div>
                 <!-- Vision -->
-                <div class="glass rounded-xl p-6 card-hover shadow-lg shadow-accent/5">
-                  <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                <div class="glass rounded-xl p-6 card-hover shadow-lg shadow-accent/5 group/card">
+                  <div class="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover/card:scale-110 transition-transform">
                     <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -595,6 +1118,10 @@
 
     <!-- ===================== PLAYERS SECTION ===================== -->
     <section id="players" class="py-10 lg:py-16 bg-dark-surface/50 relative" aria-label="Team players">
+      <!-- Decorative background elements -->
+      <div class="absolute top-40 left-0 w-80 h-80 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-20 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="fade-section">
           <!-- Section Header -->
@@ -603,218 +1130,201 @@
             <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-3">
               Meet Our <span class="gradient-text">Players</span>
             </h2>
-            <div class="w-16 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-400 mt-4 max-w-xl mx-auto text-sm md:text-base">The heart and soul of Syndicate 22 — united by friendship, driven by passion.</p>
+            <div class="w-16 h-1 bg-accent mx-auto mt-5 rounded-full"></div>
           </div>
 
           <!-- Players Grid -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Player 1 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
+
+            <!-- Manager — Md Riaj Uddin Chowdhury -->
+            <article class="player-card" style="animation-delay: 0.05s">
+              <div class="player-img-wrapper">
                 <img src="img/riaj.jpg" alt="Md Riaj Uddin Chowdhury — Manager for Syndicate 22"
                   class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-manager">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                  Manager
+                </span>
+                <div class="jersey-number">22</div>
               </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Md Riaj Uddin Chowdhury</h3>
-                <p class="text-accent text-sm font-medium mt-1">Manager</p>
+              <div class="player-info">
+                <h3 class="player-name">Md Riaj Uddin Chowdhury</h3>
+                <p class="player-role">Manager</p>
               </div>
+              <div class="card-bottom-line"></div>
             </article>
 
-            <!-- Player 2 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/avatar_placeholder.png" alt="Istiyak Tahsin — Goalkeeper for Syndicate 22"
+            <!-- Captain — Shariar Pritam -->
+            <article class="player-card" style="animation-delay: 0.1s">
+              <div class="player-img-wrapper">
+                <img src="img/pritam.jpg" alt="Shariar Pritam — Captain & Midfielder for Syndicate 22"
                   class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-midfielder">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="5"/></svg>
+                  Midfielder
+                </span>
+                <div class="jersey-number">22</div>
               </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Istiyak Tahsin</h3>
-                <p class="text-accent text-sm font-medium mt-1">Goalkeeper</p>
-              </div>
-            </article>
-
-            <!-- Player 3 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/pritam.jpg" alt="Shariar Pritam — Midfielder for Syndicate 22"
-                  class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
-              </div>
-              <div class="p-5">
-                <div class="flex items-center gap-2">
-                  <h3 class="font-heading font-bold text-white text-lg">
-                    Shariar Pritam
-                  </h3>
-                  <p class="text-accent font-bold">C</p>
+              <div class="player-info">
+                <div class="flex items-center">
+                  <h3 class="player-name">Shariar Pritam</h3>
+                  <span class="captain-badge captain-c">C</span>
                 </div>
-                <p class="text-accent text-sm font-medium mt-1">Midfielder</p>
+                <p class="player-role">Midfielder</p>
               </div>
+              <div class="card-bottom-line"></div>
             </article>
 
-            <!-- Player 4 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/ashik.jpg" alt="NJR Ashik — Midfielder for Syndicate 22"
+            <!-- Vice Captain — NJR Ashik -->
+            <article class="player-card" style="animation-delay: 0.15s">
+              <div class="player-img-wrapper">
+                <img src="img/ashik.jpg" alt="NJR Ashik — Vice Captain & Midfielder for Syndicate 22"
                   class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-midfielder">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="5"/></svg>
+                  Midfielder
+                </span>
+                <div class="jersey-number">22</div>
               </div>
-              <div class="p-5">
-                <div class="flex items-center gap-2">
-                  <h3 class="font-heading font-bold text-white text-lg">
-                    NJR Ashik
-                  </h3>
-                  <p class="text-accent font-bold">VC</p>
+              <div class="player-info">
+                <div class="flex items-center">
+                  <h3 class="player-name">NJR Ashik</h3>
+                  <span class="captain-badge captain-vc">VC</span>
                 </div>
-                <p class="text-accent text-sm font-medium mt-1">Midfielder</p>
+                <p class="player-role">Midfielder</p>
               </div>
+              <div class="card-bottom-line"></div>
             </article>
 
-            <!-- Player 5 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/avatar_placeholder.png" alt="Md Samiul Islam — Midfielder for Syndicate 22"
+            <!-- Goalkeeper — Istiyak Tahsin-->
+            <article class="player-card" style="animation-delay: 0.2s">
+              <div class="player-img-wrapper">
+                <img src="img/tahsin.jpg" alt="Istiyak Tahsin — Goalkeeper for Syndicate 22"
                   class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-goalkeeper">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  Goalkeeper
+                </span>
+                <div class="jersey-number">22</div>
               </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Md Samiul Islam</h3>
-                <p class="text-accent text-sm font-medium mt-1">Midfielder</p>
+              <div class="player-info">
+                <h3 class="player-name">Istiyak Tahsin</h3>
+                <p class="player-role">Goalkeeper</p>
               </div>
+              <div class="card-bottom-line"></div>
             </article>
 
-            <!-- Player 6 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/avatar_placeholder.png" alt="Md AL Hasan — Striker for Syndicate 22"
-                  class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
-              </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Md AL Hasan</h3>
-                <p class="text-accent text-sm font-medium mt-1">Striker</p>
-              </div>
-            </article>
 
-            <!-- Player 7 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
+            <!-- Striker — Md Omayer Hossain -->
+            <article class="player-card" style="animation-delay: 0.2s">
+              <div class="player-img-wrapper">
                 <img src="img/Omayer.jpg" alt="Md Omayer Hossain — Striker for Syndicate 22"
                   class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-striker">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  Striker
+                </span>
+                <div class="jersey-number">22</div>
               </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Md Omayer Hossain</h3>
-                <p class="text-accent text-sm font-medium mt-1">Striker</p>
+              <div class="player-info">
+                <h3 class="player-name">Md Omayer Hossain</h3>
+                <p class="player-role">Striker</p>
               </div>
+              <div class="card-bottom-line"></div>
             </article>
-
-            <!-- Player 8 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
+            
+            <!-- Striker — Sayed Tusher -->
+            <article class="player-card" style="animation-delay: 0.25s">
+              <div class="player-img-wrapper">
                 <img src="img/tusar.jpg" alt="Sayed Tusher — Striker for Syndicate 22"
                   class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-striker">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  Striker
+                </span>
+                <div class="jersey-number">22</div>
               </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Sayed Tusher</h3>
-                <p class="text-accent text-sm font-medium mt-1">Striker</p>
+              <div class="player-info">
+                <h3 class="player-name">Sayed Tusher</h3>
+                <p class="player-role">Striker</p>
               </div>
+              <div class="card-bottom-line"></div>
             </article>
 
-            <!-- Player 9 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/shapa.jpg" alt="Md Nurer Shapa — Defender for Syndicate 22"
-                  class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
-              </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Md Nurer Shapa</h3>
-                <p class="text-accent text-sm font-medium mt-1">Defender</p>
-              </div>
-            </article>
-
-            <!-- Player 10 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/avatar_placeholder.png" alt="Mohammed Bakhtiyar — Defender for Syndicate 22"
-                  class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
-              </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Mohammed Bakhtiyar</h3>
-                <p class="text-accent text-sm font-medium mt-1">Defender</p>
-              </div>
-            </article>
-
-            <!-- Player 11 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
-                <img src="img/moinul.jpg" alt="Md Moinul Hossain — Defender for Syndicate 22"
-                  class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
-              </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">Md Moinul Hossain</h3>
-                <p class="text-accent text-sm font-medium mt-1">Defender</p>
-              </div>
-            </article>
-
-            <!-- Player 12 -->
-            <article class="glass rounded-2xl overflow-hidden card-hover group">
-              <div class="relative img-hover">
+            <!-- Striker — AN Rihab -->
+            <article class="player-card" style="animation-delay: 0.3s">
+              <div class="player-img-wrapper">
                 <img src="img/rehab.jpg" alt="AN Rihab — Striker for Syndicate 22"
                   class="w-full aspect-square object-cover" loading="lazy" />
-                <div
-                  class="absolute top-3 right-3 w-10 h-10 rounded-full bg-accent flex items-center justify-center font-heading font-black text-dark text-sm border-2 border-white/10 shadow-lg shadow-accent/20">
-                  22</div>
-                <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-dark-card to-transparent"></div>
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-striker">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                  Striker
+                </span>
+                <div class="jersey-number">22</div>
               </div>
-              <div class="p-5">
-                <h3 class="font-heading font-bold text-white text-lg">AN Rihab</h3>
-                <p class="text-accent text-sm font-medium mt-1">Striker</p>
+              <div class="player-info">
+                <h3 class="player-name">AN Rihab</h3>
+                <p class="player-role">Striker</p>
               </div>
+              <div class="card-bottom-line"></div>
             </article>
+
+            <!-- Defender — Md Nurer Shapa -->
+            <article class="player-card" style="animation-delay: 0.35s">
+              <div class="player-img-wrapper">
+                <img src="img/shapa.jpg" alt="Md Nurer Shapa — Defender for Syndicate 22"
+                  class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-defender">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                  Defender
+                </span>
+                <div class="jersey-number">22</div>
+              </div>
+              <div class="player-info">
+                <h3 class="player-name">Md Nurer Shapa</h3>
+                <p class="player-role">Defender</p>
+              </div>
+              <div class="card-bottom-line"></div>
+            </article>
+
+            <!-- Defender — Md Moinul Hossain -->
+            <article class="player-card" style="animation-delay: 0.4s">
+              <div class="player-img-wrapper">
+                <img src="img/moinul.jpg" alt="Md Moinul Hossain — Defender for Syndicate 22"
+                  class="w-full aspect-square object-cover" loading="lazy" />
+                <div class="player-overlay"></div>
+                <span class="position-badge badge-defender">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                  Defender
+                </span>
+                <div class="jersey-number">22</div>
+              </div>
+              <div class="player-info">
+                <h3 class="player-name">Md Moinul Hossain</h3>
+                <p class="player-role">Defender</p>
+              </div>
+              <div class="card-bottom-line"></div>
+            </article>
+
           </div>
         </div>
       </div>
     </section>
     <!-- ===================== GALLERY SECTION ===================== -->
-    <section id="gallery" class="py-10 lg:py-16 bg-dark-surface/50 relative" aria-label="Photo gallery">
+    <section id="gallery" class="py-16 lg:py-24 relative" aria-label="Photo gallery">
+      <div class="absolute top-0 left-0 w-full section-divider"></div>
+      <div class="absolute top-20 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-40 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"></div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="fade-section">
           <!-- Section Header -->
@@ -823,120 +1333,187 @@
             <h2 class="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-3">
               Photo <span class="gradient-text">Gallery</span>
             </h2>
-            <div class="w-16 h-1 bg-accent mx-auto mt-4 rounded-full"></div>
+            <p class="text-gray-400 mt-4 max-w-lg mx-auto text-sm md:text-base">Reliving the best moments from the pitch and beyond.</p>
+            <div class="w-16 h-1 bg-accent mx-auto mt-5 rounded-full"></div>
           </div>
 
           <!-- Gallery Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
-              <img src="img/g/2025.jpg" alt="Syndicate 22 football match"
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
+              <img src="img/g/2025.jpg" alt="Syndicate 22 — 2025 Season"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
-              <img src="img/g/20251.jpeg" alt="Syndicate 22 football match"
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
+              <img src="img/g/20251.jpeg" alt="Syndicate 22 — Match Day 2025"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
-              <img src="img/g/20252.jpeg" alt="Syndicate 22 football match"
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
+              <img src="img/g/20252.jpeg" alt="Syndicate 22 — Celebration 2025"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
-              <img src="img/g/2024.jpg" alt="Syndicate 22 football match"
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
+              <img src="img/g/2024.jpg" alt="Syndicate 22 — 2024 Season"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/18.jpg" alt="Syndicate 22 football match"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/17.jpg" alt="Syndicate 22 football match"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/16.jpg" alt="Syndicate 22 football match"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/15.jpg" alt="Syndicate 22 football match"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/14.jpg" alt="Syndicate 22 football match"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/13.jpg" alt="Syndicate 22 football match"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/12.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/11.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/10.jpeg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/9.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/8.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/7.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/6.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/5.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/4.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/3.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/2.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
-            <div class="gallery-item rounded-xl overflow-hidden img-hover aspect-[4/3] cursor-pointer">
+            <div class="gallery-item gallery-pro-item aspect-[4/3]">
               <img src="img/g/1.jpg" alt="Syndicate 22 players celebrate"
                 class="w-full h-full object-cover" loading="lazy" />
+              <div class="gallery-zoom-icon">
+                <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
+              </div>
             </div>
 
           </div>
@@ -945,18 +1522,19 @@
     </section>
 
     <!-- ===================== FOOTER ===================== -->
-    <footer class="relative pt-16 pb-8 border-t border-white/5 bg-dark-card/60" role="contentinfo">
-      <div class="absolute top-0 left-0 w-full gradient-line"></div>
+    <footer class="relative pt-20 pb-8 bg-[#080808]" role="contentinfo">
+      <div class="absolute top-0 left-0 w-full footer-gradient-line"></div>
+      <div class="absolute top-20 left-1/4 w-80 h-80 bg-accent/3 rounded-full blur-3xl pointer-events-none"></div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <!-- Brand -->
           <div class="lg:col-span-2">
-            <div class="flex items-center gap-3 mb-4">
-              <div
-                class="w-10 h-10 rounded-lg flex items-center justify-center font-heading font-black group-hover:scale-110 transition-transform">
-                <img src="img/logonobg.png" alt="Syndicate 22" loading="lazy" />
+            <div class="flex items-center gap-3 mb-5">
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center overflow-hidden bg-white/5 border border-white/10">
+                <img src="img/logonobg.png" alt="Syndicate 22" loading="lazy" class="w-10 h-10 object-contain" />
               </div>
-              <span class="font-heading font-bold text-xl">
+              <span class="font-heading font-bold text-2xl">
                 <span class="text-white">SYNDICATE</span>
                 <span class="text-accent ml-1">22</span>
               </span>
@@ -965,56 +1543,67 @@
               Syndicate 22 is a football team made by friends from Chhagalnaiya Academy (SSC 2022 batch). We love
               playing football together and making great memories.
             </p>
+            <!-- Social Icons -->
+            <div class="flex items-center gap-3">
+              <a href="https://www.facebook.com/profile.php?id=61576181378583" target="_blank" rel="noopener noreferrer" class="footer-social-icon" aria-label="Facebook">
+                <svg class="w-5 h-5 text-gray-400 hover:text-accent transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            </div>
           </div>
 
           <!-- Quick Links -->
           <div>
-            <h4 class="font-heading font-bold text-white mb-4">Quick Links</h4>
+            <h4 class="font-heading font-bold text-white mb-5 text-sm uppercase tracking-wider">Quick Links</h4>
             <ul class="space-y-3">
-              <li><a href="#about" class="text-gray-400 text-sm hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="#players" class="text-gray-400 text-sm hover:text-accent transition-colors">Players</a></li>
-              <li><a href="#gallery" class="text-gray-400 text-sm hover:text-accent transition-colors">Gallery</a></li>
+              <li><a href="#hero" class="footer-link text-gray-400 text-sm hover:text-accent transition-colors">Home</a></li>
+              <li><a href="#about" class="footer-link text-gray-400 text-sm hover:text-accent transition-colors">About Us</a></li>
+              <li><a href="#players" class="footer-link text-gray-400 text-sm hover:text-accent transition-colors">Players</a></li>
+              <li><a href="#gallery" class="footer-link text-gray-400 text-sm hover:text-accent transition-colors">Gallery</a></li>
             </ul>
           </div>
 
           <!-- Club Info -->
           <div>
-            <h4 class="font-heading font-bold text-white mb-4">Club Info</h4>
-            <ul class="space-y-3">
-              <li class="flex items-start gap-2">
-                <svg class="w-4 h-4 text-accent mt-0.5 flex-shrink-0" fill="none" stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span class="text-gray-400 text-sm">Chhagalnaiya Academy</span>
+            <h4 class="font-heading font-bold text-white mb-5 text-sm uppercase tracking-wider">Club Info</h4>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-gray-400 text-sm">Chhagalnaiya Academy</p>
+                  <p class="text-gray-500 text-xs mt-0.5">Feni, Bangladesh</p>
+                </div>
               </li>
-              <li class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 48 48"
-                  class="w-5 h-5 text-accent mt-0.5 flex-shrink-0">
-                  <path fill="#38bdf8" d="M24 5A19 19 0 1 0 24 43A19 19 0 1 0 24 5Z"></path>
-                  <path fill="#fff"
-                    d="M26.572,29.036h4.917l0.772-4.995h-5.69v-2.73c0-2.075,0.678-3.915,2.619-3.915h3.119v-4.359c-0.548-0.074-1.707-0.236-3.897-0.236c-4.573,0-7.254,2.415-7.254,7.917v3.323h-4.701v4.995h4.701v13.729C22.089,42.905,23.032,43,24,43c0.875,0,1.729-0.08,2.572-0.194V29.036z">
-                  </path>
-                </svg>
-                <span class="text-gray-400 text-sm"><a href="https://www.facebook.com/profile.php?id=61576181378583"
-                    target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors">Syndicate
-                    22</a></span>
+              <li class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-gray-400 text-sm">Founded 2022</p>
+                  <p class="text-gray-500 text-xs mt-0.5">SSC 2022 Batch</p>
+                </div>
               </li>
             </ul>
           </div>
         </div>
 
         <!-- Bottom Bar -->
-        <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="section-divider mb-8"></div>
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
           <p class="text-gray-500 text-sm">&copy; 2026 <a href="https://github.com/raihanstack"
-              class="text-red-500 hover:text-accent transition-colors">raihanstack</a>. All rights reserved.</p>
-          <div class="flex items-center gap-6">
-            <a href="#" class="text-gray-500 text-sm hover:text-accent transition-colors">Privacy Policy</a>
-            <a href="#" class="text-gray-500 text-sm hover:text-accent transition-colors">Terms of Service</a>
-          </div>
+              class="text-accent/70 hover:text-accent transition-colors font-medium">raihanstack</a>. All rights reserved.</p>
+          <p class="text-gray-600 text-xs">Built with ❤️ for Syndicate 22</p>
         </div>
       </div>
     </footer>
@@ -1032,27 +1621,71 @@
     <div id="lightbox"
       class="lightbox-modal fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center"
       aria-hidden="true" role="dialog">
+
+      <!-- Counter -->
+      <div id="lightboxCounter" class="lightbox-counter"></div>
+
       <button id="lightboxClose"
-        class="absolute top-6 right-6 text-white text-4xl hover:text-accent transition-colors focus:outline-none"
-        aria-label="Close lightbox">&times;</button>
+        class="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:text-accent hover:bg-white/10 transition-all focus:outline-none"
+        aria-label="Close lightbox">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
 
       <button id="lightboxPrev"
-        class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-accent hover:scale-115 transition-all text-4xl focus:outline-none p-2"
-        aria-label="Previous image">&#10094;</button>
+        class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-accent hover:bg-white/10 transition-all focus:outline-none"
+        aria-label="Previous image">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
 
       <div class="max-w-5xl max-h-[80vh] px-4 flex flex-col items-center">
         <img id="lightboxImg" src="" alt="Enlarged view"
-          class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl border border-white/5">
+          class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-white/10">
         <p id="lightboxCaption" class="text-gray-300 text-sm mt-4 text-center font-medium"></p>
       </div>
 
       <button id="lightboxNext"
-        class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/70 hover:text-accent hover:scale-115 transition-all text-4xl focus:outline-none p-2"
-        aria-label="Next image">&#10095;</button>
+        class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-accent hover:bg-white/10 transition-all focus:outline-none"
+        aria-label="Next image">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
     </div>
 
     <!-- ===================== JAVASCRIPT ===================== -->
     <script>
+      // ---------- Page Loader ----------
+      window.addEventListener('load', () => {
+        const loader = document.getElementById('pageLoader');
+        if (loader) {
+          setTimeout(() => loader.classList.add('loaded'), 400);
+          setTimeout(() => loader.remove(), 1100);
+        }
+      });
+
+      // ---------- Hero Particles ----------
+      (function createParticles() {
+        const container = document.getElementById('heroParticles');
+        if (!container) return;
+        const count = window.innerWidth < 768 ? 12 : 25;
+        for (let i = 0; i < count; i++) {
+          const p = document.createElement('div');
+          p.classList.add('particle');
+          const size = Math.random() * 4 + 1;
+          p.style.width = size + 'px';
+          p.style.height = size + 'px';
+          p.style.left = Math.random() * 100 + '%';
+          p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+          p.style.animationDelay = (Math.random() * 10) + 's';
+          p.style.opacity = Math.random() * 0.5 + 0.1;
+          container.appendChild(p);
+        }
+      })();
+
       // ---------- Sticky Navbar ----------
       const navbar = document.getElementById('navbar');
 
@@ -1153,6 +1786,17 @@
 
       fadeSections.forEach(section => fadeObserver.observe(section));
 
+      // ---------- Player Card Reveal ----------
+      const playerCards = document.querySelectorAll('.player-card');
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+      playerCards.forEach(card => cardObserver.observe(card));
+
       // ---------- Animated Counters ----------
       const counters = document.querySelectorAll('.counter-value');
       let countersAnimated = false;
@@ -1189,34 +1833,6 @@
 
       counters.forEach(counter => counterObserver.observe(counter));
 
-      // ---------- Contact Form ----------
-      const contactForm = document.getElementById('contactForm');
-
-      if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-
-          const name = document.getElementById('name').value.trim();
-          const email = document.getElementById('email').value.trim();
-          const message = document.getElementById('message').value.trim();
-
-          if (!name || !email || !message) {
-            alert('Please fill in all fields.');
-            return;
-          }
-
-          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-          if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-          }
-
-          alert('Thank you for contacting Syndicate 22 FC! We will get back to you soon.');
-          contactForm.reset();
-        });
-      }
-
       // ---------- Gallery Lightbox ----------
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
@@ -1224,16 +1840,19 @@
       const lightboxClose = document.getElementById('lightboxClose');
       const lightboxPrev = document.getElementById('lightboxPrev');
       const lightboxNext = document.getElementById('lightboxNext');
-      const galleryImages = document.querySelectorAll('.gallery-item img');
+      const lightboxCounter = document.getElementById('lightboxCounter');
 
       let activeImgIndex = 0;
-      const imagesArray = Array.from(galleryImages);
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const imagesArray = Array.from(galleryItems).map(item => item.querySelector('img'));
 
       function showLightbox(index) {
         activeImgIndex = index;
         const img = imagesArray[index];
+        if (!img) return;
         lightboxImg.src = img.src;
         lightboxCaption.textContent = img.alt || "Syndicate 22 Moment";
+        if (lightboxCounter) lightboxCounter.textContent = (index + 1) + ' / ' + imagesArray.length;
         lightbox.classList.add('active');
         lightbox.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
@@ -1247,24 +1866,19 @@
 
       function nextLightboxImg() {
         let nextIndex = activeImgIndex + 1;
-        if (nextIndex >= imagesArray.length) {
-          nextIndex = 0;
-        }
+        if (nextIndex >= imagesArray.length) nextIndex = 0;
         showLightbox(nextIndex);
       }
 
       function prevLightboxImg() {
         let prevIndex = activeImgIndex - 1;
-        if (prevIndex < 0) {
-          prevIndex = imagesArray.length - 1;
-        }
+        if (prevIndex < 0) prevIndex = imagesArray.length - 1;
         showLightbox(prevIndex);
       }
 
-      imagesArray.forEach((img, index) => {
-        img.closest('.gallery-item').addEventListener('click', () => {
-          showLightbox(index);
-        });
+      // Initial bind
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => showLightbox(index));
       });
 
       if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
